@@ -1,19 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-//import 'package:get_storage/get_storage.dart';
+import 'package:get_storage/get_storage.dart';
 
 class ThemeController extends GetxController{
 
-  //final _box = GetStorage();
- // final _key = 'isDarkMode';
+  final _getStorage =  GetStorage();
+  final _key = 'isDarkMode';
+  ThemeMode getThemeMode (){
+    return isSavedDarkMode()? ThemeMode.dark : ThemeMode.light;
+  }
 
-  ThemeMode get theme => Get.isDarkMode ? ThemeMode.dark:ThemeMode.light;
+  bool isSavedDarkMode ()  {
+    return _getStorage.read(_key)??false;
+  }
+   void saveThemeMode (bool isDarkMode)  {
+      _getStorage.write(_key, isDarkMode);
+   }
 
- // bool _loadTheme()=> _box.read(_key)?? false;
+   void changeThemeMode (){
+     Get.changeThemeMode(isSavedDarkMode() ? ThemeMode.light : ThemeMode.dark);
+     saveThemeMode(!isSavedDarkMode());
+   }
 
-  //void saveTheme (bool isDarkMode) => _box.write(_key, isDarkMode);
 
-   void changeTheme(ThemeData theme)=> Get.changeTheme(theme);
-
-   void changeThemeMode(ThemeMode themeMode) => Get.changeThemeMode(themeMode);
 }

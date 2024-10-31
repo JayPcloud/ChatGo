@@ -1,6 +1,7 @@
-import 'package:chatgo/Services/firebaseFirestore.dart';
+import 'package:chatgo/Controlller_logic/utils.dart';
 import'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class ForgotPassword extends StatefulWidget {
@@ -21,13 +22,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
   }
 
   Future <void> passwordReset() async {
-    showDialog(context: context,
-        barrierDismissible: false,
-        builder: (context){
-          return const Center(child: CircularProgressIndicator(
-            strokeCap:StrokeCap.butt ,
-          ));
-        });
+    Utils().loadingCircle(context);
     try {
       await FirebaseAuth.instance.sendPasswordResetEmail(
           email: _emailController.text.trim());
@@ -58,38 +53,37 @@ class _ForgotPasswordState extends State<ForgotPassword> {
     return Scaffold(
       appBar:AppBar(backgroundColor: Colors.transparent),
       body: Padding(
-        padding: const EdgeInsets.fromLTRB(20, 200, 20, 0),
+        padding:  EdgeInsets.fromLTRB(20.w, 200.h, 20.w, 0),
         child: Column(
           children: [
             const Text(
                 "Enter your user Email and we will send you a password reset link"),
-            const SizedBox(height: 10,),
+             SizedBox(height: 10.h,),
             TextFormField(
               controller: _emailController,
-              cursorWidth: 1.3,
-              cursorRadius: const Radius.circular(2),
-              style: const TextStyle(fontSize: 17),
+              cursorWidth: 1.3.w,
+              cursorRadius:  Radius.circular(2.r),
+              style:  TextStyle(fontSize: 17.sp),
               // enableSuggestions: true,
               decoration: InputDecoration(
 
-                // errorText: isValidEmail?null:'',
                 labelText: "Enter e-mail",
                 labelStyle:
                 const TextStyle(
                     color: Colors.black26, fontWeight: FontWeight.w600),
                 icon: const Icon(Icons.abc),
-                contentPadding: const EdgeInsets.only(left: 10),
+                contentPadding:  EdgeInsets.only(left: 10.w),
                 border: OutlineInputBorder(
                     gapPadding: 0,
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(10.r),
                     borderSide: const BorderSide(
                       color: Colors.black12,
                     )),
               ),
             ),
-            const SizedBox(height: 10,),
-            MaterialButton(shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadiusDirectional.all(Radius.circular(15))),
+             SizedBox(height: 10.h,),
+            MaterialButton(shape:  RoundedRectangleBorder(
+                borderRadius: BorderRadiusDirectional.all(Radius.circular(15.r))),
               color: Colors.deepPurple[200],
               onPressed: passwordReset,
               child: const Text("send link",),

@@ -13,6 +13,9 @@ class Themes {
     cardColor: Colors.deepPurple,
       indicatorColor: Colors.black38,
     focusColor: Colors.deepPurple.shade100,
+      bottomAppBarTheme:  BottomAppBarTheme(color: Colors.deepPurple.shade200,
+          surfaceTintColor: Colors.transparent,)
+
 
   );
   static final darkTheme = ThemeData(
@@ -24,5 +27,7 @@ class Themes {
     canvasColor:Colors.white10,
       indicatorColor: Colors.white38,
     cardColor: Colors.black45,
-      focusColor:Colors.black);
+      focusColor:Colors.black,
+      bottomAppBarTheme: const BottomAppBarTheme(color:Colors.white12 , surfaceTintColor: Colors.black)
+  );
 }

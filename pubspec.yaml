@@ -39,6 +39,19 @@ dependencies:
   firebase_core: ^2.27.0
   firebase_auth: ^4.17.5
   cloud_firestore: ^4.15.8
+  image_picker: ^1.0.5
+  firebase_storage: ^11.6.9
+  path_provider: ^2.1.2
+  http: 1.2.0
+  collection: ^1.18.0
+  connectivity_plus: ^6.0.3
+  internet_connection_checker_plus: ^0.0.1
+  video_player: ^2.8.1
+  video_compress: ^3.1.2
+  flutter_screenutil: ^5.9.3
+  mime_type: ^1.0.0
+  google_nav_bar: ^5.0.6
+
 
 
 
@@ -46,6 +59,10 @@ dependencies:
   grouped_list: ^4.2.0
   # date format
   intl: ^0.17.0
+  flutter_native_splash: ^2.3.10
+  smooth_page_indicator: ^1.2.0+3
+  get_storage: ^2.1.1
+  flutter_launcher_icons: ^0.13.1
 
 
 
@@ -101,3 +118,22 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
+flutter_native_splash:
+  android: true
+  ios: true
+  web: false
+
+  color: 'BDA2CB'
+  image: 'assets/chatgo logo.jpg'
+
+  android_12:
+    color: 'BDA2CB'
+    image: 'assets/chatgo logo.jpg'
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: "AppIcon"
+  image_path: "assets/chatgo logo.jpg"
+  min_sdk_android: 21
+  remove_alpha_ios: true

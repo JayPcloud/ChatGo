@@ -1,8 +1,11 @@
-import 'package:chatgo/Authentication/login.dart';
-import 'package:chatgo/Services/firebaseFirestore.dart';
+import 'package:chatgo/Services/firebase/firebaseFirestore.dart';
+import 'package:chatgo/wrapper.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+
+import '../Controlller_logic/utils.dart';
 
 
 class SignUp extends StatefulWidget {
@@ -31,6 +34,8 @@ class _SignUpState extends State<SignUp> {
   final confirmPassController= TextEditingController();
 
   final _fireStore = FireStoreService();
+
+  final _utils = Utils();
 
   @override
   void dispose() {
@@ -72,7 +77,7 @@ class _SignUpState extends State<SignUp> {
     }else{
       errorMessage = 'Invalid password';
       snackBar('password! : minimum of 6 characters',Colors.black,
-          IconButton(icon: const Icon(Icons.close,size:20,),
+          IconButton(icon:  Icon(Icons.close,size:20.w,),
               onPressed:closeSnackBar,));
       isValidPassword=false;
 
@@ -106,7 +111,7 @@ class _SignUpState extends State<SignUp> {
           duration:const Duration(seconds:5),
           //showCloseIcon: close,
           dismissDirection: DismissDirection.horizontal,
-          width: 320,
+          width: 320.w,
           backgroundColor: color,
           shape: RoundedRectangleBorder(borderRadius: BorderRadiusDirectional.circular(20)),
           behavior:SnackBarBehavior.floating,));
@@ -118,43 +123,45 @@ class _SignUpState extends State<SignUp> {
 
   Future register ()async{
 
-    //Loading
-    showDialog(context: context,
-        barrierDismissible: false,
-        builder: (context){
-          return const Center(child: CircularProgressIndicator(
-            strokeCap:StrokeCap.butt ,
-          ));
-        });
+   if(validCredentials()==true){
 
-    //Tries to register user
-    try{// create user
+     _utils.loadingCircle(context);
+
+     try{
        if(validCredentials()==true){
          UserCredential? userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
-          email: emailController.text.trim(),
-          password: passwordController.text.trim());
-       // Collect userDetails
-       _fireStore. createUserDocument(
-           userNameController.text.trim(),
-           userCredential,
-           passwordController.text.trim()
-       );
-         Get.offAll(Login(showSignUpPage: ()=>Get.to(SignUp(showLoginPage: () => Get.back(),)),));
+             email: emailController.text.trim(),
+             password: passwordController.text.trim()
+         ).then((value) async {
+           await _fireStore. createUserDocument(
+               userNameController.text.trim(),
+               value,
+               passwordController.text.trim(),
+               userNameController.text.trim().toLowerCase()
+           );
+           Get.off(const Wrapper());
+           //Navigator.pop(context);
+         });
 
-         //_fireStore.signOut;
 
-       //Navigator.of(context).pop();
 
-        snackBar('User created successfully',Colors.black,Icon(Icons.verified_outlined,color: Colors.green,));
 
-    } } on FirebaseAuthException catch(e){
-      Navigator.of(context).pop();
-      showDialog(context: context,
-        builder: (context) => AlertDialog(
-          title: Text('ERROR!',style:TextStyle(color:Colors.red)),
-            content: Text(e.message.toString())
-        ),);
-    }
+         //Get.offAll(()=>Login(showSignUpPage: ()=>Get.to(SignUp(showLoginPage: () => Get.back(),)),));
+
+         snackBar('User created successfully',Colors.black,const Icon(Icons.verified_outlined,color: Colors.green,));
+
+       } } on FirebaseAuthException catch(e){
+       Navigator.of(context).pop();
+       showDialog(context: context,
+         builder: (context) => AlertDialog(
+             title: Text('ERROR!',style:TextStyle(color:Colors.red)),
+             content: Text(e.message.toString())
+         ),);
+     }
+   }
+
+
+
   }
 
   @override
@@ -166,43 +173,43 @@ class _SignUpState extends State<SignUp> {
           Image.asset(
             "assets/Screenshot_20240120-001335.jpg",
             fit: BoxFit.fill,
-            height: 805.5,
-            width: 400,
+            height: 805.5.h,
+            width: 400.w,
           ),
-          const Padding(
-            padding: EdgeInsets.only(top: 60, left: 125),
+           Padding(
+            padding: EdgeInsets.only(top: 60.h, left: 125.w),
             child: Text('CHAT-GO',
                 style: TextStyle(
                     color: Colors.white70,
-                    fontSize: 25,
+                    fontSize: 25.sp,
                     fontWeight: FontWeight.w700,
                     shadows: [
-                      Shadow(color: Colors.pinkAccent, blurRadius: 4)
+                      Shadow(color: Colors.pinkAccent, blurRadius: 4.r)
                     ])),
           ),
-          const Padding(
+           Padding(
             padding: EdgeInsets.only(
-              top: 140,
-              left: 10,
+              top: 140.h,
+              left: 10.w,
             ),
             child: Text('signUp',
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 21,
+                  fontSize: 21.sp,
                   fontWeight: FontWeight.w500,
                 )),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 200, left: 10, right: 10),
+            padding:  EdgeInsets.only(top: 200.h, left: 10.w, right: 10.w),
             child: Container(
-              height: 450,
+              height: 450.h,
               decoration: BoxDecoration(
                   color: Colors.white.withOpacity(0.5),
-                  borderRadius: BorderRadius.circular(30)),
+                  borderRadius: BorderRadius.circular(30.r)),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 230, left: 30, right: 30),
+            padding:  EdgeInsets.only(top: 230.h, left: 30.w, right: 30.w),
             child: TextFormField(
               controller: userNameController,
               onChanged: (value) {
@@ -210,9 +217,9 @@ class _SignUpState extends State<SignUp> {
                   isValidUserName=true;
                 });
               },
-              cursorWidth: 1.3,
-              cursorRadius: const Radius.circular(2),
-              style: const TextStyle(fontSize: 17),
+              cursorWidth: 1.3.w,
+              cursorRadius:  Radius.circular(2.r),
+              style:  TextStyle(fontSize: 17.sp),
               // enableSuggestions: true,
               decoration: InputDecoration(
                 errorText: isValidUserName==true?null:'at-least four characters',
@@ -221,10 +228,10 @@ class _SignUpState extends State<SignUp> {
                 const TextStyle(
                     color: Colors.black26, fontWeight: FontWeight.w600),
                 icon: const Icon(Icons.abc),
-                contentPadding: const EdgeInsets.only(left: 10),
+                contentPadding:  EdgeInsets.only(left: 10.w),
                 border: OutlineInputBorder(
                     gapPadding: 0,
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(10.r),
                     borderSide: const BorderSide(
                       color: Colors.black12,
                     )),
@@ -232,7 +239,7 @@ class _SignUpState extends State<SignUp> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 300, left: 30, right: 30),
+            padding:  EdgeInsets.only(top: 300.h, left: 30.w, right: 30.w),
             child: TextFormField(
               controller: emailController,
               onChanged: (value) {
@@ -240,9 +247,9 @@ class _SignUpState extends State<SignUp> {
                   isValidEmail=true;
                 });
               },
-              cursorWidth: 1.3,
-              cursorRadius: const Radius.circular(2),
-              style: const TextStyle(fontSize: 17),
+              cursorWidth: 1.3.w,
+              cursorRadius:  Radius.circular(2.r),
+              style:  TextStyle(fontSize: 17.sp),
               // enableSuggestions: true,
               decoration: InputDecoration(
 
@@ -251,11 +258,11 @@ class _SignUpState extends State<SignUp> {
                 labelStyle:
                 const TextStyle(
                     color: Colors.black26, fontWeight: FontWeight.w600),
-                icon: const Icon(Icons.abc),
-                contentPadding: const EdgeInsets.only(left: 10),
+                icon: const Icon(Icons.email),
+                contentPadding:  EdgeInsets.only(left: 10.w),
                 border: OutlineInputBorder(
                     gapPadding: 0,
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(10.r),
                     borderSide: const BorderSide(
                       color: Colors.black12,
                     )),
@@ -263,7 +270,7 @@ class _SignUpState extends State<SignUp> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 370, left: 30, right: 30),
+            padding:  EdgeInsets.only(top: 370.h, left: 30.w, right: 30),
             child: TextFormField(
               obscureText: showPassword==false?true:false,
               onChanged: (value) {
@@ -273,11 +280,9 @@ class _SignUpState extends State<SignUp> {
                 });
               },
               controller: passwordController,
-              cursorWidth: 1.3,
+              cursorWidth: 1.3.w,
               maxLength: 12,
-              // cursorRadius: const Radius.circular(2),
-              style: const TextStyle(fontSize: 17),
-              // enableSuggestions: true,
+              style:  TextStyle(fontSize: 17.sp),
               decoration: InputDecoration(
                 errorText: isValidPassword==true?null:errorMessage ,
                 suffixIcon: IconButton(onPressed:() {
@@ -285,7 +290,7 @@ class _SignUpState extends State<SignUp> {
                   } else {setState(() {
                     showPassword=true;
                   });}},
-                    icon:showPassword==true?Icon(Icons.visibility):Icon(Icons.visibility_off) ),
+                    icon:showPassword==true?const Icon(Icons.visibility):const Icon(Icons.visibility_off) ),
 
                 labelText: "password(6 characters min.)",
                 labelStyle: const TextStyle(
@@ -293,21 +298,21 @@ class _SignUpState extends State<SignUp> {
                   fontWeight: FontWeight.w600,
                 ),
                 icon: const Icon(Icons.lock),
-                contentPadding: const EdgeInsets.only(left: 10),
+                contentPadding:  EdgeInsets.only(left: 10.w),
                 border:
 
                 OutlineInputBorder(
                     gapPadding: 0,
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: const BorderSide(
+                    borderRadius: BorderRadius.circular(10.r),
+                    borderSide:  BorderSide(
                       color: Colors.black12,
-                      width: 10,
+                      width: 10.w,
                     )),
               ),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 440, left: 30, right: 30),
+            padding:  EdgeInsets.only(top: 440.h, left: 30.w, right: 30.w),
             child: TextFormField(
               obscureText: showPassword==false?true:false,
               onChanged: (value) {
@@ -317,34 +322,23 @@ class _SignUpState extends State<SignUp> {
 
               },
               controller: confirmPassController,
-              cursorWidth: 1.3,
-              // cursorRadius: const Radius.circular(2),
-              style: const TextStyle(fontSize: 17),
-              // enableSuggestions: true,
+              cursorWidth: 1.3.w,
+              style:  TextStyle(fontSize: 17.sp),
               decoration: InputDecoration(
                  errorText:confirmPassController.text.trim()==passwordController.text.trim()?null:confirmError ,
-                // suffixIcon: IconButton(onPressed:() {
-                //   if (showPassword==true){setState(() {showPassword=false;});
-                //   } else {setState(() {
-                //     showPassword=true;
-                //   });}},
-                //     icon:showPassword==true?Icon(Icons.visibility):Icon(Icons.visibility_off) ),
-
                 labelText: "confirm_password",
                 labelStyle: const TextStyle(
                   color: Colors.black26,
                   fontWeight: FontWeight.w600,
                 ),
                 icon: const Icon(Icons.system_security_update_good),
-                contentPadding: const EdgeInsets.only(left: 10),
-                border:
-
-                OutlineInputBorder(
+                contentPadding:  EdgeInsets.only(left: 10.w),
+                border: OutlineInputBorder(
                     gapPadding: 0,
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: const BorderSide(
+                    borderRadius: BorderRadius.circular(10.r),
+                    borderSide:  BorderSide(
                       color: Colors.black12,
-                      width: 10,
+                      width: 10.w,
                     )),
               ),
             ),
@@ -352,7 +346,7 @@ class _SignUpState extends State<SignUp> {
 
 
           Padding(
-              padding: const EdgeInsets.only(top: 500, left: 18),
+              padding:  EdgeInsets.only(top: 500.h, left: 18.w),
               child: Row(
                 children: [
                   Checkbox(
@@ -387,23 +381,23 @@ class _SignUpState extends State<SignUp> {
               )),
 
           Padding(
-            padding: const EdgeInsets.only(top: 550, left: 130,),
+            padding:  EdgeInsets.only(top: 550.h, left: 130.w,),
             child: TextButton(
               onPressed: register,
               style: ButtonStyle(
                 // fixedSize: MaterialStatePropertyAll(Size(20,10)),
-                  textStyle: const MaterialStatePropertyAll(
-                      TextStyle(fontSize: 15, fontWeight: FontWeight.w600)),
+                  textStyle:  MaterialStatePropertyAll(
+                      TextStyle(fontSize: 15.sp, fontWeight: FontWeight.w600)),
                   overlayColor: const MaterialStatePropertyAll(Colors.blue),
                   backgroundColor: const MaterialStatePropertyAll(
                       Colors.redAccent),
                   shape: MaterialStatePropertyAll(RoundedRectangleBorder(
-                      borderRadius: BorderRadiusDirectional.circular(15)))),
+                      borderRadius: BorderRadiusDirectional.circular(15.r)))),
               child:const Text("     Register     "),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 610,),
+            padding:  EdgeInsets.only(top: 610.h,),
             child: Center(
               child: GestureDetector(
                 onTap:widget.showLoginPage,
