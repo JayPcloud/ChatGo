@@ -33,7 +33,7 @@ With a robust set of features including ephemeral stories, story sharing, real-t
 ![Screenshot Description](https://github.com/JayPcloud/ChatGo/blob/main/Screenshot_20250126-162536[1].jpg)
 
 ### Recent_chats/Stories Screen(Dark_Mode)
-![Screenshot Description](https://github.com/JayPcloud/ChatGo/blob/main/Screenshot_20250126-173108.jpg)
+![Screenshot Description](https://github.com/JayPcloud/ChatGo/blob/main/Screenshot_20250126-173108.jpg =300*200)
 ### private_chat Screen(Dark_Mode)
 ![Screenshot Description](https://github.com/JayPcloud/ChatGo/blob/main/Screenshot_20250126-162536.jpg)
 
@@ -41,8 +41,13 @@ With a robust set of features including ephemeral stories, story sharing, real-t
 ![Screenshot Description](https://github.com/JayPcloud/ChatGo/blob/main/Screenshot_20250126-162707.jpg)
 ### private_chat Screen(Light_Mode)
 ![Screenshot Description](https://github.com/JayPcloud/ChatGo/blob/main/Screenshot_20250126-162940.jpg)
+
 ### Saved_users/search Screen(Light_Mode)
 ![Screenshot Description](https://github.com/JayPcloud/ChatGo/blob/main/Screenshot_20250126-162720.jpg)
+### Search/Find_users Page(Light_Mode)
+![Screenshot Description](https://github.com/JayPcloud/ChatGo/blob/main/Screenshot_20250126-182209[1].jpg
+)
+
 ### Profile Page(Light_Mode)
 ![Screenshot Description](https://github.com/JayPcloud/ChatGo/blob/main/Screenshot_20250126-162738.jpg)
 ### Edit_Profile Page(Light_Mode)
