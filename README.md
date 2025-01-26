@@ -29,20 +29,23 @@ With a robust set of features including ephemeral stories, story sharing, real-t
 - Easy Navigation and routing using GetX's built-in features
 
 ## Screenshots
-
+### Login/Auth Screen
 ![Screenshot Description](https://github.com/JayPcloud/ChatGo/blob/main/Screenshot_20250126-162536[1].jpg)
 
+### Recent_chats/Stories Screen(Dark_Mode)
+![Screenshot Description](https://github.com/JayPcloud/ChatGo/blob/main/Screenshot_20250126-173108.jpg)
+### private_chat Screen(Dark_Mode)
 ![Screenshot Description](https://github.com/JayPcloud/ChatGo/blob/main/Screenshot_20250126-162536.jpg)
 
+### Recent_chats/Stories Screen (Light_Mode)
 ![Screenshot Description](https://github.com/JayPcloud/ChatGo/blob/main/Screenshot_20250126-162707.jpg)
-
+### private_chat Screen(Light_Mode)
+![Screenshot Description](https://github.com/JayPcloud/ChatGo/blob/main/Screenshot_20250126-162940.jpg)
+### Saved_users/search Screen(Light_Mode)
 ![Screenshot Description](https://github.com/JayPcloud/ChatGo/blob/main/Screenshot_20250126-162720.jpg)
-
+### Profile Page(Light_Mode)
 ![Screenshot Description](https://github.com/JayPcloud/ChatGo/blob/main/Screenshot_20250126-162738.jpg)
-
+### Edit_Profile Page(Light_Mode)
 ![Screenshot Description](https://github.com/JayPcloud/ChatGo/blob/main/Screenshot_20250126-162749.jpg)
 
-![Screenshot Description](https://github.com/JayPcloud/ChatGo/blob/main/Screenshot_20250126-162940.jpg)
-
-![Screenshot Description](https://github.com/JayPcloud/ChatGo/blob/main/Screenshot_20250126-173108.jpg)
 
