@@ -31,7 +31,7 @@ Designed with a focus on simplicity and ease of use, the app's intuitive interfa
 ## Screenshots
 
 ### Login/Auth Screen
-![Screenshot Description](https://github.com/JayPcloud/ChatGo/blob/main/Screenshot_20250126-162536[1].jpg)
+![Screenshot Description](https://github.com/JayPcloud/ChatGo/blob/main/readme_assets/Screenshot_20250126-162536[1].jpg)
 
 <table>
   <tr>
