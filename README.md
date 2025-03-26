@@ -35,14 +35,14 @@ Designed with a focus on simplicity and ease of use, the app's intuitive interfa
 
 <table>
   <tr>
-    <td><img src="https://github.com/JayPcloud/ChatGo/blob/main/Screenshot_20250126-173108.jpg" alt="Recent_chats/Stories Screen(Dark_Mode)" width="300"/><br/>Recent_chats/Stories Screen(Dark_Mode)</td>
-    <td><img src="https://github.com/JayPcloud/ChatGo/blob/main/Screenshot_20250126-162536.jpg" alt="private_chat Screen(Dark_Mode)" width="300"/><br/>private_chat Screen(Dark_Mode)</td>
-    <td><img src="https://github.com/JayPcloud/ChatGo/blob/main/Screenshot_20250126-162707.jpg" alt="Recent_chats/Stories Screen (Light_Mode)" width="300"/><br/>Recent_chats/Stories Screen (Light_Mode)</td>
+    <td><img src="https://github.com/JayPcloud/ChatGo/blob/main/readme_assets/Screenshot_20250126-173108.jpg" alt="Recent_chats/Stories Screen(Dark_Mode)" width="300"/><br/>Recent_chats/Stories Screen(Dark_Mode)</td>
+    <td><img src="https://github.com/JayPcloud/ChatGo/blob/main/readme_assets/Screenshot_20250126-162536.jpg" alt="private_chat Screen(Dark_Mode)" width="300"/><br/>private_chat Screen(Dark_Mode)</td>
+    <td><img src="https://github.com/JayPcloud/ChatGo/blob/main/readme_assets/Screenshot_20250126-162707.jpg" alt="Recent_chats/Stories Screen (Light_Mode)" width="300"/><br/>Recent_chats/Stories Screen (Light_Mode)</td>
   </tr>
   <tr> 
-    <td><img src="https://github.com/JayPcloud/ChatGo/blob/main/Screenshot_20250126-162940.jpg" alt="private_chat Screen(Light_Mode)" width="300"/><br/>private_chat Screen(Light_Mode)</td>
-    <td><img src="https://github.com/JayPcloud/ChatGo/blob/main/Screenshot_20250126-162720.jpg" alt="Saved_users/search Screen(Light_Mode)" width="300"/><br/>Saved_users/search Screen(Light_Mode)</td>
-    <td><img src="https://github.com/JayPcloud/ChatGo/blob/main/Screenshot_20250126-162738.jpg" alt="Profile Page(Light_Mode)" width="300"/><br/>Profile Page(Light_Mode)</td>
+    <td><img src="https://github.com/JayPcloud/ChatGo/blob/main/readme_assets/Screenshot_20250126-162940.jpg" alt="private_chat Screen(Light_Mode)" width="300"/><br/>private_chat Screen(Light_Mode)</td>
+    <td><img src="https://github.com/JayPcloud/ChatGo/blob/main/readme_assets/Screenshot_20250126-162720.jpg" alt="Saved_users/search Screen(Light_Mode)" width="300"/><br/>Saved_users/search Screen(Light_Mode)</td>
+    <td><img src="https://github.com/JayPcloud/ChatGo/blob/main/readme_assets/Screenshot_20250126-162738.jpg" alt="Profile Page(Light_Mode)" width="300"/><br/>Profile Page(Light_Mode)</td>
   </tr>
 <!--   <tr>
     <td><img src="https://github.com/JayPcloud/ChatGo/blob/main/Screenshot_20250126-162749.jpg" alt="Edit_Profile Page(Light_Mode)" width="300"/><br/>Edit_Profile Page(Light_Mode)</td>
